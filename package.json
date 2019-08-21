@@ -1,6 +1,6 @@
 {
   "name": "@ematipico/runner",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Run concurrent async operations and cache them",
   "main": "dist/index.js",
   "license": "MIT",
@@ -30,9 +30,9 @@
   },
   "engines": {
     "node": ">=8.10.0"
-	},
-	"files": [
-		"./dist",
-		"README.md"
-	]
+  },
+  "files": [
+    "./dist",
+    "README.md"
+  ]
 }
