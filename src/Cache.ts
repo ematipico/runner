@@ -1,5 +1,5 @@
 interface Values {
-	[key: string]: any;
+	[key: string]: unknown;
 }
 
 export class Cache {
@@ -8,18 +8,18 @@ export class Cache {
 		this.values = {};
 	}
 
-	public store<T>(key: string, value: T) {
+	public store<T>(key: string, value: T): void {
 		this.values[key] = value;
 	}
 
 	public used<T>(key: string): T | null {
 		if (this.values[key] !== undefined) {
-			return this.values[key];
+			return this.values[key] as T;
 		}
 		return null;
 	}
 
-	public purge(key?: string) {
+	public purge(key?: string): void {
 		if (key) {
 			if (this.values[key]) {
 				delete this.values[key];

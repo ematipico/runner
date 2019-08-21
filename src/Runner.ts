@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Cache } from "./Cache";
 
 interface Queue {
 	op: any;
-	args: any[];
+	args: unknown[];
 
 	resolve: (value?: any) => void;
 	reject: (value?: any) => void;
@@ -72,7 +73,7 @@ export class Runner {
 	 * @returns
 	 * @memberof Runner
 	 */
-	private isUsed<R>(args: any[]) {
+	private isUsed<R>(args: any[]): R {
 		const payloadAsString = JSON.stringify(args);
 
 		return this.cache.used<R>(payloadAsString);
@@ -88,7 +89,7 @@ export class Runner {
 	 * @param {*} resolve
 	 * @memberof Runner
 	 */
-	private enqueue<R>(op: Operation<R>, args: any[], resolve: any, reject: any) {
+	private enqueue<R>(op: Operation<R>, args: any[], resolve: any, reject: any): void {
 		this.queue.push({
 			args,
 			op,
@@ -97,10 +98,10 @@ export class Runner {
 		});
 	}
 
-	private async executeQueue<R>(op: Operation<R>, args: any[]) {
-		return new Promise<R>((resolve, reject) => {
+	private async executeQueue<R>(op: Operation<R>, args: any[]): Promise<R> {
+		return new Promise<R>((resolve, reject): void => {
 			this.enqueue(op, args, resolve, reject);
-			this.executeOperations();
+			this.executeOperations<R>();
 		});
 	}
 
@@ -117,7 +118,7 @@ export class Runner {
 	 * @returns
 	 * @memberof Runner
 	 */
-	private async executeOperations<R>() {
+	private async executeOperations<R>(): Promise<R> {
 		if (this.isBusy) {
 			return;
 		}
