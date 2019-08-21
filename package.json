@@ -8,7 +8,8 @@
     "test": "jest",
     "test:ci": "CI=true jest --coverage",
     "build": "tsc",
-    "release": "standard-version"
+    "release": "standard-version",
+		"lint": "eslint --ext .ts,.js ./src"
   },
   "author": "Emanuele Stoppa",
   "devDependencies": {
