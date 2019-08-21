@@ -1,6 +1,6 @@
 {
   "name": "@ematipico/runner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Run concurrent async operations and cache them",
   "main": "dist/index.js",
   "license": "MIT",
@@ -8,8 +8,8 @@
     "test": "jest",
     "test:ci": "CI=true jest --coverage",
     "build": "tsc",
-		"release": "standard-version"
-	},
+    "release": "standard-version"
+  },
   "author": "Emanuele Stoppa",
   "devDependencies": {
     "@babel/core": "^7.5.5",
